@@ -1,5 +1,10 @@
+from functools import wraps
+
+
 def singleton(class_):
     instances = {}
+
+    @wraps(class_)
     def wrapper(*args, **kwargs):
         if class_ not in instances:
             instances[class_] = class_(*args, **kwargs)
